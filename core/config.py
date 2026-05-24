@@ -4,8 +4,7 @@ from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
     app_name: str = "Ticket Assistant API"
-    database_url: str
-    jwt_secret: str
+    seeding_enabled: bool = False
 
     db_user: str = "DB_USER"
     db_password: str = "DB_PASSWORD"

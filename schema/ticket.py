@@ -3,7 +3,7 @@ from pydantic import BaseModel
 from schema.department import Department
 
 
-class TicketModel(BaseModel):
+class Ticket(BaseModel):
     id: int
     subject: str
     description: str
