@@ -25,11 +25,24 @@ async def seed_tickets():
         return
 
     insert_query = """
-                   INSERT INTO users (id, name, email, is_active)
+                   INSERT INTO tickets (id, \
+                                        subject, \
+                                        description, \
+                                        department)
                    VALUES (%s, %s, %s, %s) ON CONFLICT (id) DO NOTHING; \
                    """
 
-    with db.get_cursor() as cursor:
-        cursor.executemany(insert_query, ticket_records)
+    ticket_values = [
+        (
+            ticket.id,
+            ticket.subject,
+            ticket.description,
+            ticket.department,
+        )
+        for ticket in ticket_records
+    ]
 
-    logger.info(f"Successfully seeded {len(ticket_records)} records into the database.")
+    with db.get_cursor() as cursor:
+        cursor.executemany(insert_query, ticket_values)
+
+    logger.info(f"Successfully seeded {len(ticket_values)} records into the database.")

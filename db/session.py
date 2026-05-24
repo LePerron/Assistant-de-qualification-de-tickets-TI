@@ -1,28 +1,28 @@
 from contextlib import contextmanager
-from core.config import get_settings
+
 import psycopg
 
-settings = get_settings()
+from core.config import get_settings
 
 
 class DbSession:
-    """Classe de configuration pour gérer les sessions PostgreSQL."""
+    """Gère les connexions PostgreSQL."""
 
-    def __init__(self):
-        self.database_url = settings.database_url
+    def __init__(self, database_url: str):
+        self.database_url = database_url
 
     @contextmanager
     def get_cursor(self):
         """Gestionnaire de contexte pour obtenir un curseur SQL sécurisé."""
 
-        with psycopg.connect(self.database_url) as conn:
-            with conn.cursor() as cur:
-                try:
+        try:
+            with psycopg.connect(self.database_url) as conn:
+                with conn.cursor() as cur:
                     yield cur
-                except psycopg.OperationalError as e:
-                    print(f"Database connection error: {e}")
-                except Exception:
-                    raise
+
+        except psycopg.OperationalError as e:
+            raise RuntimeError("Database connection error") from e
 
 
-db = DbSession()
+settings = get_settings()
+db = DbSession(settings.database_url)

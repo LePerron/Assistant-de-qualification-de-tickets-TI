@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class Department(Enum):
+class TicketCategory(StrEnum):
     ACCESS = "Access"
     MANAGEMENT = "Management"
     APPLICATION = "Application"

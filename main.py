@@ -7,12 +7,14 @@ from core.logger import logger
 from db.database import initialize_db
 from db.seeding import seed_db
 
+settings = get_settings()
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     await initialize_db()
 
-    if get_settings().seeding_enabled:
+    if settings.seeding_enabled:
         logger.info("Seeding enabled: Seeding the DB.")
         await seed_db()
     else:
@@ -23,15 +25,11 @@ async def lifespan(app: FastAPI):
     logger.info("Application shutting down...")
 
 
-settings = get_settings()
-
 app = FastAPI(
     lifespan=lifespan,
     title=settings.app_name,
 )
 
-
-# app.include_router(router)
 
 @app.middleware("http")
 async def log_requests(request: Request, call_next):
@@ -55,3 +53,6 @@ async def root():
         "message": "Hello World",
         "time": time.time(),
     }
+
+# app.include_router(router)
+

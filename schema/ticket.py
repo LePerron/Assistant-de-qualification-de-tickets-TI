@@ -1,10 +1,13 @@
 from pydantic import BaseModel
 
-from schema.department import Department
+from schema.ticket_category import TicketCategory
+from schema.priority import TicketPriority
 
 
 class Ticket(BaseModel):
-    id: int
+    id: str
     subject: str
     description: str
-    department: Department
+    department: str
+    category: TicketCategory | None = None
+    priority: TicketPriority | None = None
