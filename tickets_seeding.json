@@ -1,0 +1,62 @@
+[
+  {
+    "id": "TCK-001",
+    "subject": "Excel plante avec le fichier budget",
+    "description": "Depuis ce matin Excel ferme automatiquement quand j’ouvre le fichier budget Q3. J’ai une réunion à 13h.",
+    "department": "Finance"
+  },
+  {
+    "id": "TCK-002",
+    "subject": "Mot de passe oublié",
+    "description": "Je n’arrive plus à me connecter à mon compte Windows. Je dois accéder au CRM ce matin.",
+    "department": "Ventes"
+  },
+  {
+    "id": "TCK-003",
+    "subject": "Internet ne fonctionne plus dans l’entrepôt",
+    "description": "Plus personne dans l’entrepôt n’a accès à Internet ni au système d’inventaire. Les scanners ne se connectent plus.",
+    "department": "Opérations"
+  },
+  {
+    "id": "TCK-004",
+    "subject": "Accès au dossier employés",
+    "description": "J’aurais besoin d’un accès au dossier partagé RH/Employés pour préparer les documents d’accueil.",
+    "department": "RH"
+  },
+  {
+    "id": "TCK-005",
+    "subject": "Courriel bizarre reçu",
+    "description": "J’ai reçu un courriel qui semble venir du directeur avec un lien pour approuver un paiement urgent. L’adresse semble étrange.",
+    "department": "Comptabilité"
+  },
+  {
+    "id": "TCK-006",
+    "subject": "L’imprimante du 2e étage ne répond plus",
+    "description": "On ne peut plus imprimer sur l’imprimante près de la salle de conférence. Elle apparaît hors ligne pour tout le monde.",
+    "department": "Administration"
+  },
+  {
+    "id": "TCK-007",
+    "subject": "CRM très lent",
+    "description": "Le CRM prend parfois 30 secondes à ouvrir une fiche client. Plusieurs personnes de mon équipe ont le même problème.",
+    "department": "Service client"
+  },
+  {
+    "id": "TCK-008",
+    "subject": "Préparer ordinateur pour nouvel employé",
+    "description": "Un nouveau chargé de projet commence lundi. Il aura besoin d’un portable, Microsoft 365, Teams, VPN et accès au dossier Projets.",
+    "department": "RH"
+  },
+  {
+    "id": "TCK-009",
+    "subject": "VPN impossible à connecter",
+    "description": "Je suis en déplacement et le VPN refuse de se connecter. J’ai une présentation client dans 45 minutes.",
+    "department": "Direction"
+  },
+  {
+    "id": "TCK-010",
+    "subject": "Document confidentiel envoyé au mauvais destinataire",
+    "description": "J’ai envoyé par erreur un contrat confidentiel à une adresse externe incorrecte. Le fichier contient des informations sensibles.",
+    "department": "Juridique"
+  }
+]

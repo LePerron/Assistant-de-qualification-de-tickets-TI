@@ -18,6 +18,8 @@ class DbSession:
             with conn.cursor() as cur:
                 try:
                     yield cur
+                except psycopg.OperationalError as e:
+                    print(f"Database connection error: {e}")
                 except Exception:
                     raise
 
