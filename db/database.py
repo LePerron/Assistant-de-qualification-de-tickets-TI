@@ -2,7 +2,7 @@ from core.logger import logger
 from db.session import db
 
 
-def initialize_db():
+async def initialize_db():
     print("DB Initialization if not exist...")
 
     with db.get_cursor() as cursor:

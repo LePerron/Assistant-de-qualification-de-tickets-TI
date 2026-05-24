@@ -1,16 +1,32 @@
 from functools import lru_cache
-from pydantic_settings import BaseSettings
+
+from pydantic import computed_field
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        env_file_encoding="utf-8",
+        case_sensitive=False,
+    )
+
     app_name: str = "Ticket Assistant API"
     seeding_enabled: bool = False
 
-    db_user: str = "DB_USER"
-    db_password: str = "DB_PASSWORD"
-    db_host: str = "DB_HOST", "localhost"
-    db_port: str = "DB_PORT", "5432"
-    db_name: str = "DB_NAME"
+    db_user: str
+    db_password: str
+    db_host: str = "localhost"
+    db_port: int = 5432
+    db_name: str
+
+    @computed_field
+    @property
+    def database_url(self) -> str:
+        return (
+            f"postgresql+psycopg://{self.db_user}:{self.db_password}"
+            f"@{self.db_host}:{self.db_port}/{self.db_name}"
+        )
 
 
 @lru_cache
